@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>受控组件</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <!-- <div id="test2"></div> -->
+  <!-- 引入react核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 引入react-DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel-es6转es5，jsx转js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <script type="text/babel">
+    class Login extends React.Component{
+      state={
+        username:'',
+        password:''
+      }
+      /*
+      受控组件：组件中所有输入类DOM，随着输入维护到状态中，需要的时候从状态中取出
+      */
+      handleSubmit = (event) => {
+        event.preventDefault();
+        const {username,password} = this.state
+        alert(`${username},${password}`)
+      }
+      saveUserName = (event)=>{
+        const {value:username} = event.target
+        this.setState({username})
+      }
+      savePassword = (event)=>{
+        const {value:password} = event.target
+        this.setState({password})
+      }
+      
+      render(){
+        return (
+          <form onSubmit={this.handleSubmit}>
+            用户名：<input onChange={this.saveUserName} />
+            密码：<input onChange={this.savePassword} type="password"/>
+            <input type="submit" value="登录" />
+          </form>
+        )
+      }
+    }
+    ReactDOM.render(<Login/>,document.getElementById('test'))
+
+  </script>
+</body>
+
+</html>

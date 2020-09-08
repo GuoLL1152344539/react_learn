@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>state</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <div id="test2"></div>
+  <!-- 引入react核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 引入react-DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel-es6转es5，jsx转js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <!-- 引入prop-types，用于做类型限制 -->
+  <script type="text/javascript" src="../js/prop-types.js"></script>
+  <script type="text/babel">
+    function Demo(props) {
+      // console.log(props);
+      const {name,age,sex} = props
+      return (
+        <ul>
+          <li>姓名：{name}</li>
+          <li>年龄：{age}</li>
+          <li>性别：{sex}</li>
+        </ul>
+      )
+    }
+    // 准备一个人的数据
+    const p1 = {
+      name:'峰哥',
+      age:18,
+      sex:'男'
+    }
+    // 2.渲染组件到页面
+    ReactDOM.render(<Demo name="Jerry" age={20} sex="女"/>,document.getElementById('test'))
+    // ReactDOM.render(<Person name="Jerry"/>,document.getElementById('test2'))
+  </script>
+</body>
+
+</html>

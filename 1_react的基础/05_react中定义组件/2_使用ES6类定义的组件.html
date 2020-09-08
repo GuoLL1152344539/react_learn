@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用ES6类定义组件</title>
+</head>
+<body>
+  <div id="test"></div>
+  <!-- 引入react核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 引入react-DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel-es6转es5，jsx转js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <script type="text/babel">
+    // 1.定义一个组件-开头字母大写
+    class Demo extends React.Component{
+      render(){
+        // 1.render放在Demo的原型对象上
+        // 2.render是(Demo的实例对象、Demo组件的实例对象、Demo对象)调用的
+        console.log(this);//this指向Demo组件的实例对象
+        return <h2>我是用类定义的组件（适用于【复杂组件】的定义）</h2>
+      }
+    }
+    // 2.渲染组件到页面
+    ReactDOM.render(<Demo/>,document.getElementById('test'))
+    console.log(Demo.prototype);
+    /*
+    当执行ReactDOM.render后，发生了：
+      1.react发现，渲染的是一个标签，且标签首字母大写，react随后去查找组件定义的位置
+      2.react发现，组件是用类定义的，react创建了该类的实例对象，
+      3.通过实例对象调用到了render，获取到了返回值
+      4.将返回值（虚拟DOM）渲染到页面
+    */
+    // 组件的状态，驱动着页面的显示
+  </script>
+</body>
+</html>

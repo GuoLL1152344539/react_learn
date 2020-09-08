@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsx练习</title>
+</head>
+<body>
+  <div id="test"></div>
+  <!-- 引入react核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 引入react-DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel-es6转es5，jsx转js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <script type="text/babel">
+    /*
+      js语句和js表达式的区别
+        1.表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方
+          例如：
+            a
+            a+b
+            demo(1)
+            arr.map()
+            function demo(){}
+        2.语句（代码）：控制代码走向
+          if(){}
+          for(){}
+          switch(){case:xxx}
+    */
+    const list = ['Angular', 'React', 'Vue', 'Flutter']
+    // 1.创建虚拟DOM
+    const VDOM = (
+      <div>
+        <h1>前端技术列表</h1>
+        <ul>
+          {
+            // 把数据的数组变成一个标签的数组
+            // 此处使用index作为key，没问题，但有时候会有bug，后期仔细讲解
+            list.map((item, index) => <li key={index}>{item}</li>)
+          }
+        </ul>
+      </div>
+    )
+    // 2.渲染虚拟DOM到页面
+    ReactDOM.render(VDOM,document.getElementById('test'))
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>使用JSX创建DOM</title>
+</head>
+
+<body>
+  <div id="test1"></div>
+  <div id="test2"></div>
+  <!-- 引入react核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 引入react-DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+
+  <script type="text/javascript">
+    const myId = 'AtGUigu'
+    const myData = 'HElLo,WOrld'
+    // 1.创建虚拟DOM
+    // const VDOM = React.createElement(标签名，标签属性，标签内容)
+    const VDOM = React.createElement('h2', {
+      id: myId.toUpperCase()
+    }, 
+      React.createElement('span', {}, myData.toUpperCase())
+    )
+    // 2.渲染虚拟DOM到页面
+    ReactDOM.render(VDOM, document.getElementById('test2'))
+  </script>
+</body>
+
+</html>

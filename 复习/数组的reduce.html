@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript" >
+      /*
+      数组的reduce方法
+        语法：
+          arr.reduce((preValue, current, index, array) => {},initialValue)
+      */
+      let arr = [1,2,3,4,5,6,7,8,9]
+      const a = arr.reduce((preValue, current) => {
+        // console.log(preValue, current, index, array); 
+        // return '@'
+        // 求和
+        // return preValue+current
+        // 条件求和
+        // return preValue + (current % 2 === 0 ? current : 0)
+        // 条件统计
+        // return preValue + (current % 2 === 0 ? 1 : 0)
+        // 筛选最值
+        return Math.max(preValue, current)
+      },0)
+      console.log(a);
+    </script>
+  </body>
+</html>

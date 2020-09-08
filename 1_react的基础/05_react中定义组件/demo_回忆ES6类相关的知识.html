@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Person{
+      // 构造器方法：要接住new时候传入的参数
+      // 不是必须要写的，一般来说，要给实例自身上加属性时才写
+      constructor(name, age){
+        // 构造器中的this是该类的实例对象
+        this.name = name
+        this.age = age
+      }
+      // 一般方法--speak放在Person的原型对象上，给实例用
+      speak(){
+        console.log('我说话了');
+      }
+      static info = '我是一些信息'
+    }
+    const p1 = new Person('tom',18)
+    const p2 = new Person('海峰',20)
+    // console.log(p1);
+    // console.log(p2);
+
+    /* class Student extends Person{
+      // 如果A类继承了B类，且A类中写了构造器，那么A类构造器中必须调super
+      // super：让子类调用父类的构造器
+      constructor(name, age, sex){
+        super(name, age)
+        this.sex = sex
+      }
+      // 重写了从父类继承的方法
+      speak(){
+        console.log('我说话了---Student');
+      }
+    }
+    const s = new Student('peiqi', 18, '女')
+    console.log(s); */
+
+    class Student extends Person{
+      constructor(...args){//打包
+        super(...args)//拆包
+      }
+    }
+    const s = new Student('qiaozhi', 20)
+    console.log(s);
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生命周期-新</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <!-- <div id="test2"></div> -->
+  <!-- 引入react核心库 -->
+	<script type="text/javascript" src="../js/react.development.16.13.1.js"></script>
+	<!-- 引入react-dom -->
+	<script type="text/javascript" src="../js/react-dom.development.16.13.1.min.js"></script>
+	<!-- 引入babel -->
+	<script type="text/javascript" src="../js/babel.min.js"></script>
+  <script type="text/babel">
+  /*
+  
+  */
+    class Count extends React.Component{
+      constructor(...args){
+        // console.log('---constructor---');
+        super(...args)
+        this.state = {count:0}
+      }
+      add = () => {
+        const {count} = this.state
+        this.setState({count:count+1})
+      }
+      // static getDerivedStateFromProps(props){
+			// 	console.log('---getDerivedStateFromProps---');
+			// 	return {count:props.number}
+			// }
+			getSnapshotBeforeUpdate(preProps,preState){
+				// console.log(preProps,preState);
+				console.log('---getSnapshotBeforeUpdate---');
+				return '0422'
+			}
+			
+			//组件将要挂载
+			/* UNSAFE_componentWillMount(){
+				console.log('---componentWillmount---');
+			} */
+
+			//组件挂载完毕
+			componentDidMount(){
+				console.log('---componentDidMount---');
+			}
+
+			//控制组件是否可以更新
+			shouldComponentUpdate(){
+				console.log('---shouldComponentUpdate---');
+				return true
+			}
+
+			//组件将要更新
+			/* UNSAFE_componentWillUpdate(){
+				console.log('---componentWillUpdate---');
+			} */
+
+			//组件完成更新
+			componentDidUpdate(props,state,a){
+				console.log('@@@@',props,state,a);
+				console.log('---componentDidUpdate---');
+			}
+			render(){
+				// console.log('---render---');
+				return(
+					<div>
+						<h1>当前求和为:{this.state.count}</h1>
+						<button onClick={this.add}>点我+1</button>
+						<button onClick={this.force}>强制更新一下</button>
+					</div>
+				)
+			}
+    }
+
+    // 渲染组件
+    ReactDOM.render(<Count number={999}/>,document.getElementById('test'))
+
+  </script>
+</body>
+
+</html>

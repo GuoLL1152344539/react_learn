@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>refs</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <!-- <div id="test2"></div> -->
+  <!-- 引入react核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 引入react-DOM -->
+  <script type="text/javascript" src="../js/react-dom.development.js"></script>
+  <!-- 引入babel-es6转es5，jsx转js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <script type="text/babel">
+    class Demo extends React.Component{
+      // refContainer = React.createRef()//创建一个容器，存储被ref所标识的节点
+      input1RefCon = React.createRef()//创建一个容器，存储被ref所标识的节点(专人专用)
+      input2RefCon = React.createRef()//创建一个容器，存储被ref所标识的节点(专人专用)
+      showInfo = () => {
+        console.log(this.input1RefCon.current.value);
+      }
+      blurShow = () => {
+        alert(this.input2RefCon.current.value)
+      }
+      render(){
+        return (
+          <div>
+            <input ref={this.input1RefCon} type="text" placeholder="点击按钮提示"/>
+            <button onClick={this.showInfo}>点我提示数据</button>
+            <input onBlur={this.blurShow} ref={this.input2RefCon} type="text" placeholder="失去焦点提示"/>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<Demo/>,document.getElementById('test'))
+
+  </script>
+</body>
+
+</html>
