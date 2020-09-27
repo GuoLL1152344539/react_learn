@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" >
+      // $.get('http://api.apiopen.top/videoCategory', (response)=>{
+      //   console.log('成功了',response);
+      // })
+      new Promise((resolve, reject) => {
+        $.ajax({
+          url:'https://api.apiopen.top/videoCategory',
+          method:'GET',
+          success:(response)=>{console.log('成功了2',response);},
+          error: (err)=>{console.log('失败1',err);}
+        })
+      })
+      var Obj = {}
+      
+    </script>
+  </body>
+</html>
